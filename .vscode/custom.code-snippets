@@ -1,0 +1,48 @@
+{
+  "Enum Template": {
+    "scope": "typescript,typescriptreact",
+    "prefix": "enum",
+    "body": [
+      "export const ${1:EnumName} = Object.freeze({",
+      "  $0",
+      "} as const)",
+      "",
+      "export type $1 = typeof $1[keyof typeof $1]",
+      ""
+    ]
+  },
+  "API Mapper Template": {
+    "scope": "typescript",
+    "prefix": "apimapper",
+    "body": [
+      "import { createAPIMapper } from \"src/utils/createFetcher\"",
+      "import { sleep } from \"src/utils/sleep\"",
+      "",
+      "export type ${1/^(.)/${1:/upcase}/}Params = void",
+      "",
+      "export type ${1/^(.)/${1:/upcase}/}Result = void",
+      "",
+      "export const ${1:apiName} = createAPIMapper<${1/^(.)/${1:/upcase}/}Params, ${1/^(.)/${1:/upcase}/}Result>(async function ${1:apiName}() {",
+      "  await sleep()",
+      "",
+      "  return",
+      "})",
+      ""
+    ]
+  },
+  "React Component Template": {
+    "scope": "typescriptreact",
+    "prefix": "component",
+    "body": [
+      "import { memo } from \"react\"",
+      "",
+      "type Props = {}",
+      "",
+      "export const ${1:ComponentName} = memo<Props>(() => {",
+      "  return null",
+      "})",
+      "$1.displayName = \"$1\"",
+      ""
+    ]
+  }
+}
